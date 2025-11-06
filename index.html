@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الصلاة على النبي ﷺ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="favicon.png">
+  <style>
+    body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+    [dir="rtl"] { text-align: right; }
+    .copyable:hover { cursor: pointer; background: #f3f4f6; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-all duration-500">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-emerald-700 to-teal-500 text-white text-center py-16 shadow-xl">
+    <img src="favicon.png" alt="Logo" class="w-20 mx-auto mb-4 animate-bounce">
+    <h1 class="text-4xl md:text-5xl font-bold">الصلاة على النبي محمد ﷺ</h1>
+    <p class="text-lg mt-3">فضلها، فوائدها، وصيغها المباركة</p>
+    <div class="mt-6">
+      <button id="langBtn" class="bg-white text-emerald-700 px-4 py-2 rounded-full font-bold shadow hover:scale-105 transition">English</button>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-5xl mx-auto p-6 space-y-8">
+    <section>
+      <h2 class="text-2xl font-bold mb-4">🌟 فوائد الصلاة على النبي ﷺ</h2>
+      <div class="space-y-4">
+        <div class="copyable p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+          طاعة لأمر الله تعالى واتباع لسنة النبي ﷺ.
+        </div>
+        <div class="copyable p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+          سبب في مغفرة الذنوب ورفع الدرجات.
+        </div>
+        <div class="copyable p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+          تجلب شفاعة النبي ﷺ يوم القيامة.
+        </div>
+      </div>
+    </section>
+
+    <!-- Counter -->
+    <section class="bg-emerald-600 text-white text-center py-8 rounded-2xl shadow-xl">
+      <h2 class="text-2xl font-bold mb-4">عداد الصلاة على النبي ﷺ</h2>
+      <div id="counter" class="text-6xl font-extrabold">0</div>
+      <div class="mt-4 space-x-2 rtl:space-x-reverse">
+        <button id="incBtn" class="bg-yellow-400 px-6 py-2 rounded-full text-black font-bold hover:scale-110 transition">+ صلِّ</button>
+        <button id="resetBtn" class="bg-white px-6 py-2 rounded-full text-emerald-700 font-bold hover:scale-110 transition">🔄 إعادة</button>
+      </div>
+    </section>
+
+    <!-- Prayer Forms -->
+    <section>
+      <h2 class="text-2xl font-bold mb-4">💎 صيغ الصلاة على النبي ﷺ</h2>
+      <div class="copyable p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+        اللهم صل وسلم على نبينا محمد وعلى آله وصحبه أجمعين.
+      </div>
+      <div class="copyable p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition">
+        صلى الله على محمد ﷺ عدد ما ذكره الذاكرون وغفل عن ذكره الغافلون.
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6 mt-16">
+    <p>© 2025 Muslim — جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script>
+    // --- Counter Logic ---
+    let count = 0;
+    const counterDisplay = document.getElementById('counter');
+    document.getElementById('incBtn').addEventListener('click', () => {
+      count++;
+      counterDisplay.textContent = count;
+      counterDisplay.classList.add('scale-125');
+      setTimeout(() => counterDisplay.classList.remove('scale-125'), 300);
+    });
+    document.getElementById('resetBtn').addEventListener('click', () => { count = 0; counterDisplay.textContent = count; });
+
+    // --- Copy Function ---
+    document.querySelectorAll('.copyable').forEach(el => {
+      el.addEventListener('click', () => {
+        navigator.clipboard.writeText(el.innerText);
+        el.style.backgroundColor = '#c6f6d5';
+        setTimeout(() => el.style.backgroundColor = '', 600);
+      });
+    });
+
+    // --- Toggle Language ---
+    const langBtn = document.getElementById('langBtn');
+    langBtn.addEventListener('click', () => {
+      if (document.documentElement.lang === 'ar') {
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+        langBtn.textContent = 'العربية';
+        document.title = "Salat upon the Prophet ﷺ";
+      } else {
+        document.documentElement.lang = 'ar';
+        document.documentElement.dir = 'rtl';
+        langBtn.textContent = 'English';
+        document.title = "الصلاة على النبي ﷺ";
+      }
+    });
+  </script>
+
+</body>
+</html>
